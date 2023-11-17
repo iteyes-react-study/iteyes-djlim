@@ -1,4 +1,4 @@
-#Truthy & Falsy
+# Truthy & Falsy
 
 Truthy - JavaScript의 조건식에서 true가 아니어도 참으로 평가 값
 
@@ -12,55 +12,138 @@ if (a) {
 }
 ```
 
-![숫자값 -True](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/533c8568-a84d-4bc6-b6e4-afc41f9d8440/Untitled.png)
+```jsx
+let a = "12";
 
-숫자값 -True
+if (a) {
+  console.log("TRUE");
+} else {
+  console.log("FALSE");
+}
+```
 
-![문자열 - True](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/38eb076f-aea4-493b-a97b-f81deb11602e/Untitled.png)
+```jsx
+let a = "0";
 
-문자열 - True
+if (a) {
+  console.log("TRUE");
+} else {
+  console.log("FALSE");
+}
+```
 
-![Infinity - TRUE](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/3aa41a54-425d-4635-a2e4-92901185ccfc/Untitled.png)
+```jsx
+let a = Infinity;
 
-Infinity - TRUE
+if (a) {
+  console.log("TRUE");
+} else {
+  console.log("FALSE");
+}
+```
 
 falsy - 거짓이 아니어도 거짓으로 평가되는 값
 
-![null- FALSE](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/cedeb6d9-7984-4b5d-8f3d-e821373e552f/Untitled.png)
+```jsx
+let a = null;
 
-null- FALSE
+if (a) {
+  console.log("TRUE");
+} else {
+  console.log("FALSE");
+}
+```
 
-![undefined-FALSE](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/ca68991f-a844-45b9-a99f-63da0d7f3dcc/Untitled.png)
+```jsx
+let a = undefined;
 
-undefined-FALSE
+if (a) {
+  console.log("TRUE");
+} else {
+  console.log("FALSE");
+}
+```
 
-![숫자0 - FALSE](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/81e93d4b-33ae-4321-ab02-7a2e9f74111c/Untitled.png)
+```jsx
+let a = 0;
 
-숫자0 - FALSE
+if (a) {
+  console.log("TRUE");
+} else {
+  console.log("FALSE");
+}
+```
 
-![-0 - FALSE](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/f93ebf4f-5183-4fbf-af25-79ca4fbca8c0/Untitled.png)
+```jsx
+let a = -0;
 
--0 - FALSE
+if (a) {
+  console.log("TRUE");
+} else {
+  console.log("FALSE");
+}
+```
 
-![NAN - FALSE](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/3d74f076-31e2-47da-adcc-7d8490d0ee5f/Untitled.png)
+```jsx
+let a = NaN;
 
-NAN - FALSE
+if (a) {
+  console.log("TRUE");
+} else {
+  console.log("FALSE");
+}
+```
 
-![“”(빈문자열)-FALSE](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/b45abab8-c13f-4a87-95e9-ddf38c6c46a8/Untitled.png)
+```jsx
+let a = "";
 
-“”(빈문자열)-FALSE
+if (a) {
+  console.log("TRUE");
+} else {
+  console.log("FALSE");
+}
+```
 
-![undefine은 객체가 아니기 때문에 내부 프로퍼티에 접근 할 수 없음](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/31c81a8e-bc91-4f78-9851-c9dc347d1c81/Untitled.png)
+```jsx
+const getName = (person) => {
+  return person.name;
+};
 
-undefine은 객체가 아니기 때문에 내부 프로퍼티에 접근 할 수 없음
+let person;
+const name = getName(person);
+console.log(name);
+```
 
 → 조건문을 통해서 전달받은 파라미터가 객체인지 또 undefine이 아닌지 Null이 아닌지 판단해줘야 함
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/19f15143-d651-481a-8201-0b16b478f35e/Untitled.png)
+```jsx
+const getName = (person) => {
+  if (person === undefined || person === null) {
+    return "객체가 아닙니다.";
+  }
+  return person.name;
+};
+
+let person = null;
+const name = getName(person);
+console.log(name);
+```
 
 - 매번 파라미터마다 undefined, null인지 판단해줄 수 없음
+
 - falsy 속성을 이용해서 쉽게 해결 할 수 있음
 
-![null이든 undefined든 false 속성이 있기 때문에 not을 붙이면 true가 되는 성질을 활용하여 예외처리를 할 수 있다](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c4e3f2-abdf-4a7b-b791-0282bcdb1fba/92e7f8ae-7d55-4c91-a982-0612b8faab97/Untitled.png)
+```jsx
+const getName = (person) => {
+  if (!person) {
+    return "객체가 아닙니다.";
+  }
+  return person.name;
+};
 
-null이든 undefined든 false 속성이 있기 때문에 not을 붙이면 true가 되는 성질을 활용하여 예외처리를 할 수 있다
+let person = null;
+const name = getName(person);
+console.log(name);
+```
+
+- null이든 undefined든 false 속성이 있기 때문에 not을 붙이면 true가 되는 성질을 활용하여 예외처리를 할 수 있다
